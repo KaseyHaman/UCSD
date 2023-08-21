@@ -2,16 +2,16 @@ clear all;
 clc
 RRbase='/Users/kasey/RR'; cd(RRbase); RR_path_init
 cd '/Users/kasey/Desktop/School Related/UCSD/MAE40'
-
-%%Problem 1
-syms s Vi Vs C L R R1 R2
-% x={I_L, I_c, I_R, Vo}  <-- unknown vector
-A  =[ -1 1 1 0;    % I_L - Ic - Ir = 0
-     L*s  0  0 1;    % L*s*I_L + Vo = Vi
-      0  -1 0 C*s; %C*s*Vo - Ic = 0
-      0 0 R -1];  % Ir * R - Vo = 0
-b  =[ 0; Vi; 0; 0];
-x=A\b; Vo_LPF2_P1=simplify(x(3))
+% 
+% %%Problem 1
+% syms s Vi Vs C L R R1 R2
+% % x={I_L, I_c, I_R, Vo}  <-- unknown vector
+% A  =[ -1 1 1 0;    % I_L - Ic - Ir = 0
+%      L*s  0  0 1;    % L*s*I_L + Vo = Vi
+%       0  -1 0 C*s; %C*s*Vo - Ic = 0
+%       0 0 R -1];  % Ir * R - Vo = 0
+% b  =[ 0; Vi; 0; 0];
+% x=A\b; Vo_LPF2_P1=simplify(x(3))
 
 % %%Problem 2
 % syms zeta
