@@ -1,8 +1,7 @@
 clear all;
 clc
-RRbase='/Users/kasey/RR'; cd(RRbase); RR_path_init
-cd '/Users/kasey/Desktop/School Related/UCSD/MAE40'
-
+RRbase='C:\Users\kasey\Documents\GitHub\RR'; cd(RRbase); RR_path_init
+cd 'C:\Users\kasey\Documents\GitHub\UCSD\MAE40'
 
 %%Problem 1
 syms s Vi Vs C L R R1 R2
