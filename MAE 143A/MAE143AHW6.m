@@ -1,0 +1,43 @@
+clc;
+clear all;
+close all;
+
+%Problem 1
+p1a = tf([25 500 2500], [1 0 0]);
+figure (1)
+bode(p1a)
+
+p2a = tf([50 0], [5 10050 5100000 50000000]);
+figure (2)
+bode(p2a)
+
+%Problem 2
+figure
+t = 0:1/30:1;
+Y = [4*sin(20*pi*t)];
+stem(t,Y)
+title('4sin(20*pi*t)')
+% hold on; 
+% x = 0:0.00001:1;
+% y = [4*sin(20*pi*x)];
+% plot(x, y,'LineWidth',0.5)
+
+figure
+Y = [4*sin(80*pi*t)];
+stem(t,Y)
+title('4sin(80*pi*t)')
+% hold on; 
+% x = 0:0.00001:1;
+% y = [4*sin(80*pi*x)];
+% plot(x, y,'LineWidth',0.5)
+
+figure
+Y = [-4*sin(40*pi*t)];
+stem(t,Y)
+title('-4sin(40*pi*t)')
+% hold on; 
+% x = 0:0.00001:1;
+% y = [-4*sin(40*pi*x)];
+% plot(x, y,'LineWidth',0.5)
+
+

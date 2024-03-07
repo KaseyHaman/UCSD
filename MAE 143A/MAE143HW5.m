@@ -4,14 +4,13 @@ close all;
 
 %%Problem 2
 
-% %Line spectra and phase
-% for n = 1:5
-% b0 = ( -100/(n*pi)*( 1-cos(4*pi*n/3)-cos(2*pi*n/3) ) - 150/(n.^2*pi^2)*(sin(4*pi*n/3)-sin(2*pi*n/3)) );
-% b(n) = abs(b0);
-% phase(n) = atand(b0/0.0000001)
-% end
-% n = 1:5;
-
+%Line spectra and phase
+for n = 1:5
+b0 = -100./(n.*pi).*(cos(2.*pi.*n)-cos(4.*pi.*n./3)) + (-150.*sin(4.*pi.*n./3)+150.*sin(2.*pi.*n./3)+100.*pi.*n.*cos(2.*pi.*n./3))/(pi^2.*n^2) ;
+b(n) = abs(b0);
+phase(n) = atand(b0/0);
+end
+n = 1:5;
 
 %Line spectra plot
 % figure(1)
@@ -63,24 +62,24 @@ close all;
 
 
 
-%%Problem 3
-% Fourier transform plot
-func = 0;
-t = 0:0.001:10;
-count = 0;
-waveform = zeros(size(t));
-a0 = 1/2;
-for t = 0:0.001:10
-count = count + 1;
-waveform(count) = 1/2*cos(8*pi*t);
-end
-
-t = 0:0.001:10;
-figure(3)
-plot(t, waveform)
-xlabel('Time');
-ylabel('Function Value');
-title('Fourier Transform of Piecewise Function');
-xlim([0 2])
-ylim([-1 1])
-
+% %%Problem 3
+% % Fourier transform plot
+% func = 0;
+% t = 0:0.001:10;
+% count = 0;
+% waveform = zeros(size(t));
+% a0 = 1/2;
+% for t = 0:0.001:10
+% count = count + 1;
+% waveform(count) = 1/2*cos(8*pi*t)+a0;
+% end
+% 
+% t = 0:0.001:10;
+% figure(3)
+% plot(t, waveform)
+% xlabel('Time');
+% ylabel('Function Value');
+% title('Fourier Transform of Piecewise Function');
+% xlim([0 2])
+% ylim([-0.2 1.2])
+% 
