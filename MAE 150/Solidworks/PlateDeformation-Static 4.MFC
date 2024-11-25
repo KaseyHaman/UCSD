@@ -1,0 +1,16 @@
+[StartTime]
+PlateDeformation-Static 4.MFC=3s
+[SolverState]
+PlateDeformation-Static 4.MFC=2
+[MainFrame]
+PlateDeformation-Static 4.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMADAAAAADLBAAAAAEHEAAAAAGICAAAAA
+[ShowMin]
+PlateDeformation-Static 4.MFC=No
+[SolverType]
+PlateDeformation-Static 4.MFC=Linear Analysis
+[StudyType]
+PlateDeformation-Static 4.MFC=0
+[StudyName]
+PlateDeformation-Static 4.MFC=Static 4
+[Solver]
+PlateDeformation-Static 4.MFC=Iterative
