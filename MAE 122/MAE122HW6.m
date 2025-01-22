@@ -125,7 +125,7 @@ c(i) = omega / ksoln(i);
 cg(i) = c(i)/2 * ( 1 + (2*ksoln(i)*h(i)) / sinh(2*ksoln(i)*h(i)) );
 
 %Solve H with equation from lecture
-H(i) = Hdeep * (cgdeep / (2*cg(i)))^0.5;
+H(i) = Hdeep * (cgdeep / (cg(i)))^0.5;
 
 u(i) = omega * H(i) / 2 * (1 / sinh(ksoln(i) * h(i)));  % Horizontal velocity near sea bed (z=-h)
 w(i) = omega * H(i) / 2;  % Vertical velocity near surface (z=0)

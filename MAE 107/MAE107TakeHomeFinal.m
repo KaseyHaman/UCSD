@@ -5,7 +5,7 @@ format long;
 name = 'Kasey Haman';
 id = 'A16978114';
 
-%%Problem 1 
+%% Problem 1 
 
 %Initialize for Euler-------------------------------------------------------
 f = @(t, y) exp(-y).*sin(t+2.*pi.*y);
@@ -242,7 +242,7 @@ set(gca,'FontSize',10)
 
 
 
-%%Problem 2---------------------------------------------------------------
+%% Problem 2---------------------------------------------------------------
 %Plot the log error in y(T) versus log f
 %Note: Becuase Rk4 has 4 function evals per step, the amount of function
 %evals is n*4. Similarly RK2 has 2 function evals per step (n.*2) and 

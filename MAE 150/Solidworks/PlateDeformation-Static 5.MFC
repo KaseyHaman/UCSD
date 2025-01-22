@@ -1,0 +1,16 @@
+[StartTime]
+PlateDeformation-Static 5.MFC=1s
+[SolverState]
+PlateDeformation-Static 5.MFC=2
+[MainFrame]
+PlateDeformation-Static 5.MFC=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPMADAAAAADLBAAAAAEHEAAAAAGICAAAAA
+[ShowMin]
+PlateDeformation-Static 5.MFC=No
+[SolverType]
+PlateDeformation-Static 5.MFC=Linear Analysis
+[StudyType]
+PlateDeformation-Static 5.MFC=0
+[StudyName]
+PlateDeformation-Static 5.MFC=Static 5
+[Solver]
+PlateDeformation-Static 5.MFC=Sparse
