@@ -8,17 +8,41 @@ id = 'A16978114';
 %%MAE 156A Pendulum ODE Problem
 g = 9.81; % m/s^2
 L = 0.154; % Length to center of mass in meters
-m = 0.3123; %total mass in kg
-I_total = 0.00837; % Intertia in kg*m^2
-theta0 = 30*1.1; % Theta initial condition
+m_acrylic = 0.0923; % Mass of acrylic (kg)
+m_bolt = 0.055;    % Mass of each bolt (kg)
+Lzz = 4.88*10^-4;  %Inertia of acrylic about COM in kg*m^2
+Lacrylic = 0.1152; %Length from center of rotation to acrylic COM in m
+theta0 = 30; % Theta initial condition
 theta0_rad = deg2rad(theta0); % Theta initial condition in rad
 omega0 = 0; % Theta dot initial condition
 tspan = [0, 100]; % Set time span in seconds
 dt = 0.001; % Set time step in seconds
 radii = [1/8, 1/4, 1/2] * 1/2 * 0.0254; % Seperate radius values in meters
-mu = 0.21; % Coefficient of friction
+mu = 0.11; % Coefficient of friction
 
+%Calculate Inertia
+bolt_coords = [
+    0, 5.45 * 0.0254;        % Bolt 1 location in meters
+    0, (5.45 + 2.58) * 0.0254; % Bolt 2 location in meters
+    2.58 / 2 * 0.0254, (5.45 + 2.58 / 2) * 0.0254; % Bolt 3 location in meters
+    -2.58 / 2 * 0.0254, (5.45 + 2.58 / 2) * 0.0254  % Bolt 4 location in meters
+];
 
+% Moment of inertia of acrylic
+I_acrylic = Lzz + m_acrylic * Lacrylic^2; %Using given values for acrylic in metric
+
+% Calculate moment of inertia for each bolt using parallel axis theorem
+I_bolts = 0;
+for i = 1:size(bolt_coords, 1)
+    r = sqrt(bolt_coords(i, 1)^2 + bolt_coords(i, 2)^2); % distance to z-axis
+    I_bolts = I_bolts + m_bolt * r^2;
+end
+
+% Total moment of inertia (sum of acrylic and bolts)
+I_total = I_acrylic + I_bolts;
+
+%Total mass
+m = 4*m_bolt + m_acrylic;
 
 % Loop through each radius (bushing size)
 for i = 1:length(radii)
