@@ -9,14 +9,14 @@ id = 'A16978114';
 g = 9.81; % m/s^2
 L = 0.154; % Length to center of mass in meters
 m = 0.3123; %total mass in kg
-I_total = 0.00837; % Intertia in kg*m^2
-theta0 = 30*1.1; % Theta initial condition
+I_total = 0.00839; % Intertia in kg*m^2
+theta0 = 30; % Theta initial condition
 theta0_rad = deg2rad(theta0); % Theta initial condition in rad
 omega0 = 0; % Theta dot initial condition
 tspan = [0, 100]; % Set time span in seconds
 dt = 0.001; % Set time step in seconds
 radii = [1/8, 1/4, 1/2] * 1/2 * 0.0254; % Seperate radius values in meters
-mu = 0.21; % Coefficient of friction
+mu = 0.19; % Coefficient of friction
 
 
 
