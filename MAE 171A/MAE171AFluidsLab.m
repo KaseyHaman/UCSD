@@ -3,6 +3,7 @@ clc; clear all; close all;
 
 % MATLAB Script: Plot Uniform Flow, Rankine Full Body, and Half Body with Obstacle
 
+
 % Parameters
 U =0.00008832;                  % Freestream velocity (m/s)
 mu = 1.0;                 % Doublet strength (m^2/s)
@@ -19,6 +20,23 @@ y_source = 0;             % y-coordinate of the source (m)
 x_sink = x_source + (8 / 39.37);               % x-coordinate of the sink (m)
 y_sink = 0;               % y-coordinate of the sink (m)
 x_cen = 0; y_cen=0;       % Center values
+
+% % Parameters
+% U =0.030197;                  % Freestream velocity (m/s)
+% mu = 1.0;                 % Doublet strength (m^2/s)
+% Q_s = 0.0000694;                % Source strength (m^3/s)
+% Q_sink = 0.0000694*4/3;             % Sink strength (m^3/s)
+% circle_diameter = 4.5 / 39.37; % Convert 4.5 inches to meters
+% Qmodel_diameter = 1 / 39.37;  % Conver 1.5 inches to meters
+% x_min = -0.455;               % x-axis lower limit (m)
+% x_max = 0.455;                % x-axis upper limit (m)
+% y_min = -0.2925;               % y-axis lower limit (m)
+% y_max = 0.2925;                % y-axis upper limit (m)
+% x_source = x_min + (8.5 / 39.37);             % x-coordinate of the source (m)
+% y_source = 0;             % y-coordinate of the source (m)
+% x_sink = x_source + (8 / 39.37);               % x-coordinate of the sink (m)
+% y_sink = 0;               % y-coordinate of the sink (m)
+% x_cen = 0; y_cen=0;       % Center values
 
 % Create Grid
 x = linspace(x_min, x_max, 500);  % High grid resolution for smooth plot
@@ -118,3 +136,6 @@ legend('Fluid Flow', 'Source', 'location', 'southeast')
 axis equal;
 grid on;
 hold off;
+
+
+
