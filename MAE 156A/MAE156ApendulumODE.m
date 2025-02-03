@@ -8,26 +8,20 @@ id = 'A16978114';
 %%MAE 156A Pendulum ODE Problem
 g = 9.81; % m/s^2
 L = 0.154; % Length to center of mass in meters
-<<<<<<< HEAD
 m = 0.3123; %total mass in kg
 I_total = 0.00839; % Intertia in kg*m^2
-=======
 m_acrylic = 0.0923; % Mass of acrylic (kg)
 m_bolt = 0.055;    % Mass of each bolt (kg)
 Lzz = 4.88*10^-4;  %Inertia of acrylic about COM in kg*m^2
 Lacrylic = 0.1152; %Length from center of rotation to acrylic COM in m
->>>>>>> a788ded0c9caf12dc67e8a383c53e673659e5bd3
 theta0 = 30; % Theta initial condition
 theta0_rad = deg2rad(theta0); % Theta initial condition in rad
 omega0 = 0; % Theta dot initial condition
 tspan = [0, 100]; % Set time span in seconds
 dt = 0.001; % Set time step in seconds
 radii = [1/8, 1/4, 1/2] * 1/2 * 0.0254; % Seperate radius values in meters
-<<<<<<< HEAD
-mu = 0.19; % Coefficient of friction
-=======
 mu = 0.11; % Coefficient of friction
->>>>>>> a788ded0c9caf12dc67e8a383c53e673659e5bd3
+
 
 %Calculate Inertia
 bolt_coords = [
