@@ -1,5 +1,101 @@
 %Temporary Scripts
 clc; clear all; close all;
+
+%% Problem 3
+% Given data
+time = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]; % Time in minutes
+strain = [0.000, 0.025, 0.043, 0.065, 0.078, 0.092, 0.109, 0.120, 0.135, 0.153, 0.172, 0.193, 0.218, 0.255, 0.307, 0.368]; % Strain
+
+% Plot strain vs. time
+figure;
+plot(time, strain, 'bo-', 'LineWidth', 1.5, 'MarkerFaceColor', 'b');
+xlabel('Time (minutes)', 'FontSize', 12);
+ylabel('Strain', 'FontSize', 12);
+title('Creep Strain vs. Time for Aluminum Alloy at 400°C', 'FontSize', 14);
+grid on;
+
+% Determine the steady-state creep rate (secondary region)
+% Select points in the steady-state region (approximately linear portion)
+steady_time = time(8:12); % Adjust indices if needed
+steady_strain = strain(8:12);
+
+% Linear regression
+coeffs = polyfit(steady_time, steady_strain, 1);
+steady_state_creep_rate = coeffs(1); % Slope of strain vs. time
+
+% Display results
+disp(['Steady-state creep rate: ', num2str(steady_state_creep_rate), ' per minute']);
+
+% Add trendline to plot
+hold on;
+plot(steady_time, polyval(coeffs, steady_time), 'r--', 'LineWidth', 2);
+legend('Creep Data', 'Steady-State Fit', 'Location', 'NorthWest');
+
+
+%% Problem 5
+% Given data
+T_C = { [400, 600, 800, 1000], ...  % High-lead glass
+        [600, 800, 1000, 1200, 1400, 1600], ... % Soda-lime glass
+        [1200, 1400, 1600] }; % Fused silica
+
+viscosity = { [1e14, 3.16227766e7, 3.16227766e4, 1000], ... % High-lead glass
+              [1e11, 3.16227766e6, 3.16227766e4, 3162.27766, 501.1872336, 125.8925412], ... % Soda-lime glass
+              [3.16228e12, 1e10, 1.258925412e8] }; % Fused silica
+          
+R = 8.314; % Gas constant in J/(mol*K)
+
+figure;
+colors = ['r', 'g', 'b'];
+labels = {'High-lead glass', 'Soda-lime glass', 'Fused silica'};
+Ea_values = zeros(1,3); % To store activation energies
+
+for i = 1:3
+    T_K = T_C{i} + 273.15; % Convert to Kelvin
+    inv_T = 1 ./ T_K; % Compute 1/T
+    ln_visc = log(viscosity{i}); % Natural log of viscosity
+    
+    % Perform linear regression
+    coeffs = polyfit(inv_T, ln_visc, 1);
+    slope = coeffs(1);
+    
+    % Compute activation energy Q
+    Q = slope * R;
+    Ea_values(i) = Q;
+    
+    % Plot results
+    subplot(1,3,i);
+    plot(inv_T, ln_visc, 'o', 'Color', colors(i), 'MarkerFaceColor', colors(i));
+    hold on;
+    plot(inv_T, polyval(coeffs, inv_T), 'Color', colors(i));
+    xlabel('1/T (1/K)');
+    ylabel('ln(viscosity)');
+    title(labels{i});
+    grid on;
+end
+
+disp('Activation energies (J/mol):');
+disp(table(labels', Ea_values', 'VariableNames', {'Glass Type', 'Activation Energy (J/mol)'}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 % 
 % A = [1/2 1/2 -1/sqrt(2); -1/sqrt(2) 1/sqrt(2) 0; 1/2 1/2 1/sqrt(2)]
 % 

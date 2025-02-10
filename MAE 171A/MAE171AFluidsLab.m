@@ -3,12 +3,11 @@ clc; clear all; close all;
 
 % MATLAB Script: Plot Uniform Flow, Rankine Full Body, and Half Body with Obstacle
 
-
 % Parameters
-U =0.00008832;                  % Freestream velocity (m/s)
+U = 0.030196923;                  % Freestream velocity (m/s)
 mu = 1.0;                 % Doublet strength (m^2/s)
-Q_s = 0.000003469;                % Source strength (m^3/s)
-Q_sink = 0.000003469*4/3;             % Sink strength (m^3/s)
+Q_s = 0.001186;                % Source strength (m^2/s)
+Q_sink = 0.001186*4/3;             % Sink strength (m^2/s)
 circle_diameter = 4.5 / 39.37; % Convert 4.5 inches to meters
 Qmodel_diameter = 1 / 39.37;  % Conver 1.5 inches to meters
 x_min = -0.455;               % x-axis lower limit (m)
