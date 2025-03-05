@@ -9,33 +9,28 @@ format long;
 %% Changeable values
 
 % Material properties
-E = 205e9;  % Young's Modulus for chromoly steel in Pa
-G = 80e9;   % Shear Modulus for chromoly steel in Pa
-% 
-% E = 70e9;   % Young's Modulus for aluminum in Pa
-% G = 26e9;   % Shear Modulus for aluminum in Pa
+% E = 205e9;  % Young's Modulus for chromoly steel in Pa
+% G = 80e9;   % Shear Modulus for chromoly steel in Pa
+
+E = 70e9;   % Young's Modulus for aluminum in Pa
+G = 26e9;   % Shear Modulus for aluminum in Pa
 
 %Referenced inertia values
 % I = 2*9.3e-9;  %chassis 
 % J = 2*1.05e-8;  %chassis 
-% I = 2*8.998e-9;  %chassis 
-% J = 2*9.6477e-9;  %chassis 
-% I = 2*3.53e-8;  %swignarm
-% J = 2*3.91e-8;  %swignarm
-I = 2*5.500e-7;  %chassis plate
-J = 2*7.75e-7;  %chassis plate
+I = 2*3.53e-8;  %swignarm
+J = 2*3.91e-8;  %swignarm
 
 % Target flexural stiffness and torsional rigidity
 EI_target = 70e9*I;  % Target flexural stiffness in Nm^2
 GJ_target = 26e9*J; % Target torsional rigidity in Nm^2
 
 %Define constraints in inches
+   lb_rec = [0.2, 0.2, 0.035];  %lower bound b, h and t
+   ub_rec = [1.25, 1.25, 1/8];   %upper bound b, h and t
 
-   lb_rec = [1, 2, 0.065];  %lower bound b, h and t
-   ub_rec = [1, 2, 0.065];   %upper bound b, h and t
-
-   lb_cir = [3/8, 0.12];  %lower bound r and t
-   ub_cir = [3/8, 0.12];   %upper bound r and t
+   lb_cir = [3/4, 1/8];  %lower bound r and t
+   ub_cir = [3/4, 1/8];   %upper bound r and t
 
    lb_eli = [0.2, 0.2, 0.035];  %lower bound a (major), b (minor) and t
    ub_eli = [3, 3, 0.1];   %upper bound a (major), b (minor) and t
