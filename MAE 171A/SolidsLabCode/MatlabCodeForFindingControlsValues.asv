@@ -1,0 +1,137 @@
+%% Solving for K1%%
+% 2DOF
+i=0;
+
+Steady_State_disp = enc1(7000);
+F = 0.5;
+
+i = i+1;
+K1(i) = F/Steady_State_disp;
+
+%%
+
+k1avg = mean(K1);
+
+%% Finding k1+k2 %%
+% Mass 2 still
+Steady_State_disp = enc1(7000);
+F = 0.5;
+
+i = i+1;
+K1plusK2(i) = F/Steady_State_disp;
+
+%% Finding K2 %%
+
+K2 = K1plusK2 - K1;
+
+%% Finding M1 %%
+% Mass 2 still
+% i=2;
+% i = i+1;
+n=1;
+plot(enc1)
+
+
+pks = findpeaks(enc1);
+om1 = 0;
+om2 = 0;
+
+for j=1:length(enc1)
+    if enc1(j)==pks(1)
+        om1 = j;
+    end
+    if enc1(j)==pks(2)
+        om2 = j;
+    end
+end
+
+wd = (2*pi*n) / ((om2-om1) /1000);
+betaWn = 1/(t1-t0) * log((pks(1) - enc1(7000))/(pks(2) - enc1(7000)));
+Wn = sqrt(wd^2 + betaWn^2);
+%beta = betaWn/Wn;
+M1(i) = K1plusK2(i)/(Wn^2);
+
+%% Finding M2 %%
+
+
+%i=0;
+i = i+1;
+%plot(enc2)
+pks = findpeaks(enc2);
+pks = pks(pks>2500);
+om1 = 0;
+om2 = 0;
+
+for j=1:length(enc2)
+    if enc2(j)==pks(1)
+        om1 = j;
+    end
+    if enc2(j)==pks(2)
+        om2 = j;
+    end
+end
+
+w = om2-om1;
+w=1/(w/1000);
+M2(i) = K2(i)/(w*w);
+
+%% Finding D1 %%
+
+i=4;
+i = i+1;
+%plot(enc1)
+pks = findpeaks(enc1);
+pks = pks(pks>1750);
+om1 = 0;
+om2 = 0;
+
+for j=1:length(enc1)
+    if enc1(j)==pks(1)
+        t0 = j/1000;
+    end
+    if enc1(j)==pks(2)
+        t1 = j/1000;
+    end
+end
+
+wd = 2*pi/(t1-t0);
+betaWn = 1/(t1-t0) * log((pks(1) - enc1(7000))/(pks(2) - enc1(7000)));
+Wn = sqrt(wd^2 + betaWn^2);
+beta = betaWn/Wn;
+
+D1(i) = K1plusK2(i)*2*beta/Wn;
+
+%% Finding D2 %%
+
+%i=0;
+i = i+1;
+%plot(enc2)
+pks = findpeaks(enc2);
+pks = pks(pks>1750);
+t0 = 0;
+t1 = 0;
+
+for j=1:length(enc2)
+    if enc2(j)==pks(1)
+        t0 = j/1000;
+    end
+    if enc2(j)==pks(2)
+        t1 = j/1000;
+    end
+end
+
+wd = 2*pi/(t1-t0);
+betaWn = 1/(t1-t0) * log((pks(1) - enc1(7000))/(pks(2) - enc1(7000)));
+Wn = sqrt(wd^2 + betaWn^2);
+beta = betaWn/Wn;
+
+D2(i) = K2(i)*2*beta/Wn;
+
+%% Finding averages %%
+
+AvgK1 = mean(K1);
+AvgK2 = mean(K2);
+AvgM1 = mean(M1);
+AvgM2 = mean(M2);
+AvgD1 = mean(D1);
+AvgD2 = mean(D2);
