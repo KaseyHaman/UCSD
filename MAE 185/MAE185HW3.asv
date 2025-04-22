@@ -70,7 +70,10 @@ title(['T @ t=' num2str(t_bwd)])
     colorbar;
     drawnow;
 
-    T = T + dt * (-ddx_bwd_periodic(T, dx) - ddy_bwd_periodic(T, dy)); %Set new T
+     T_pred = T + dt * (-ddx_fwd_periodic(T, dx) - ddy_fwd_periodic(T, dy)); %Set new T_predictor value
+
+    T = 1/2 * (T + T_pred) - 1/2 * dt * (ddx_bwd_periodic(T_pred, dx) + ddy_bwd_periodic(T_pred, dy));
+
 
     t_bwd = t_bwd + dt; %increase time
 
@@ -137,7 +140,7 @@ title(['T @ t=' num2str(t)])
 
     T_pred = T + dt * (-ddx_fwd_periodic(T, dx) - ddy_fwd_periodic(T, dy)); %Set new T_predictor value
 
-    T = (1/2 * (T + T_pred)) - (1/2 * dt * (ddx_bwd_periodic(T_pred, dx) + ddy_bwd_periodic(T_pred, dy)));
+    T = 1/2 * (T + T_pred) - 1/2 * dt * (ddx_bwd_periodic(T_pred, dx) + ddy_bwd_periodic(T_pred, dy));
 
     t = t + dt; %increase time
 

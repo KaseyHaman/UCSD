@@ -6,7 +6,7 @@ clc; clear all; close all;
 clear variables
 close all
 clc
-addpath('functions_periodic')
+% addpath('functions_periodic')
 % Initial condition
 load('gotritons.mat','T','xx','yy');
 % Solver parameters
