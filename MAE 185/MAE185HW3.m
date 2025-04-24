@@ -26,6 +26,7 @@ title(['T @ t=' num2str(t)])
     ylabel('y');
 
     colorbar;
+    clim([0 1]);
     drawnow;
 
     T = T + dt * alpha * (d2dx2periodic(T, dx) + d2dy2periodic(T, dy)); %Set new T
@@ -68,6 +69,7 @@ title(['T @ t=' num2str(t_bwd)])
     ylabel('y');
 
     colorbar;
+    clim([0 1]);
     drawnow;
 
     T = T + dt * (-ddx_bwd_periodic(T, dx) - ddy_bwd_periodic(T, dy)); %Set new T
@@ -90,8 +92,8 @@ while t_central < t_final_central
 title(['T @ t=' num2str(t_central)])
     xlabel('x');
     ylabel('y');
-
     colorbar;
+    clim([0 1]);
     drawnow;
 
     T = T + dt * (-ddx_central_periodic(T, dx) - ddy_central_periodic(T, dy)); %Set new T
@@ -133,6 +135,7 @@ title(['T @ t=' num2str(t)])
     ylabel('y');
 
     colorbar;
+    clim([0 1]);
     drawnow;
 
     T_pred = T + dt * (-ddx_fwd_periodic(T, dx) - ddy_fwd_periodic(T, dy)); %Set new T_predictor value
