@@ -355,7 +355,7 @@ U = enforcebcs(U, adiabatic);
 end
 
 
-%Plot specific visuals for part 2.3.1
+%% Plot specific visuals for part 2.3.1
 x_locations = round([0.25; 0.5; 0.75] .* nx);
 
 figure(1)
@@ -377,7 +377,7 @@ ylabel('y')
 end
 legend('x/L = 0.25', 'x/L = 0.5', 'x/L=0.75')
 
-%Plot visuals for part 2.3.2
+%% Plot visuals for part 2.3.2
 figure(2)
 plot(xx(:, 1), T(:, 1), 'k', 'linewidth', 1.5);
 title('Wall Temperature as a Function of x')
